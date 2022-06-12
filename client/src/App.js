@@ -2,6 +2,7 @@ import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import Menu from "./components/menu/menu";
 import Room from "./components/room/room";
+import Timer from "./components/room/timer";
 
 function App() {
   const [connectedSocket, setConnectedSocket] = useState();
@@ -29,7 +30,6 @@ function App() {
         <Menu
           socket={connectedSocket}
           rooms={data.availableRooms}
-          socketName={data.socketName}
         />
       );
     }

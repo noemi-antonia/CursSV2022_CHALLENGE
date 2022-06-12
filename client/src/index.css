@@ -289,6 +289,14 @@ button:active {
   justify-content: center;
 }
 
+.mill-row  > .room-info{
+  text-align: left;
+}
+
+.mill-row  > .room-info >*{
+  margin: 5px 0;
+}
+
 .mill-row > button {
   margin-left: auto;
 }
@@ -304,4 +312,13 @@ button:active {
 .text-input {
   border: none;
   width: 90%;
+}
+
+.p20{
+  padding:20px;
+}
+
+.menu h3{
+  text-decoration: underline;
+  margin-top: 5px;
 }

@@ -1,30 +1,20 @@
-# CursSV2022
+### Challenge - Homework 7
+##### New Features:
 
-##### Course 1 Planning
+- [x] Players can enter their names or play as guests.
+  - The list of available rooms also includes the name of the person who created it (or *Guest* if they didn't enter a name)
+  ![feature1-1](screenshots/F1-01.png)
+  - After starting the game, the entered names(or *Guest*) are displayed instead of the words *You* and *Opponent*, respectively in the chat, the name of the person who sent the message appears
+- [x] Each player has 60 seconds to act, otherwise he/she will lose the game. 
+  ![feature2-1](screenshots/F2-01.png)
+  ![feature2-2](screenshots/F2-02.png)
 
-1. Setup Git, VSCode, Node
-2. How to setup nodejs
-3. How to create a simple page
+##### To run the Project:
 
-##### Server Start - Node ( Course 1, 2)
+`cd server`
+`npm install`
+`npm run devStart`
 
-- `cd server/`
-- `npm i`
-- `npm run devStart`
-
-##### Client Start - React ( Course 3)
-
-- `cd client/`
-- `npm i`
-- `npm start`
-
-### Server + Client Start - Socket.io ( Course 4)
-
-- `cd sever/`
-- `npm install`
-- `npm start` sau `nodemon server.js`
-- deschidem un nou terminal din root-ul proiectului
-- `cd client/`
-- `npm install`
-- `npm start`, la prompt-ul cu Would you like to run the app on another port instead? apăsăm tasta enter
-- Aplicația trebuie accesată prin port-ul client-ului, și anume: http://localhost:3001/
+`cd client`
+`npm install`
+`npm start`

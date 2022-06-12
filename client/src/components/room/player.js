@@ -1,6 +1,7 @@
 import PlayerArrow from "../../metadata/player_arrow";
 import TokenPlayer1 from "../../metadata/token_player_1";
 import TokenPlayer2 from "../../metadata/token_player_2";
+import Timer from "./timer";
 
 const Player = (props) => {
   let uncapturred_nodes = [];
@@ -19,7 +20,7 @@ const Player = (props) => {
         }
       >
         <div className="player-card-header">
-          <h4>{props.opponent ? "Opponent" : "You"}</h4>
+          <h4>{props.name}</h4>
           <div className="player-tokens-left">
             <div className="player-token-count">X{props.nodesToPlace}</div>
             <svg
@@ -75,6 +76,7 @@ const Player = (props) => {
             ))}
           </div>
         </div>
+        {props.action !== "wait" ? <Timer socket={props.socket} otherPlayerId={props.otherPlayerId}/> : ""}
 
         {props.error && <div className="error">{props.error}</div>}
       </div>
@@ -99,6 +101,10 @@ const Player = (props) => {
       )}
     </div>
   );
+};
+
+Player.defaultProps = {
+  name: 'Guest'
 };
 
 export default Player;

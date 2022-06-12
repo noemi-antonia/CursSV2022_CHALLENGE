@@ -6,7 +6,7 @@ const MessageForm = ({ socket }) => {
 
   const sendMessage = () => {
     // socket.emit("new-message", { name, message, roomName });
-    socket.emit("new-message", message);
+    socket.emit("new-message", message, socket.id);
     setMessage("");
   };
 

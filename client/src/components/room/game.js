@@ -3,17 +3,21 @@ import Chat from "./chat/chat";
 import Player from "./player";
 
 const Game = (props) => {
-  const opponentPlayer = () => {
-    const opponentKey = Object.keys(props.players).find(
-      (key) => key !== props.socket.id
-    );
+  const opponentKey = Object.keys(props.players).find(
+    (key) => key !== props.socket.id
+  );
 
+  const opponentPlayer = () => {
     return props.players[opponentKey];
   };
 
   const currentPlayer = () => {
     return props.players[props.socket.id];
   };
+
+  const playerNames = new Map();
+  playerNames.set(props.socket.id, currentPlayer().name);
+  playerNames.set(opponentKey, opponentPlayer().name);
 
   return (
     <div className="grid">
@@ -23,9 +27,20 @@ const Game = (props) => {
         nodes={props.nodes}
       />
       <div>
-        <Player opponent={true} {...opponentPlayer()} />
-        <Chat socket={props.socket} />
-        <Player {...currentPlayer()} />
+        {/* I send here the other player's ID as a prop, 
+        because if someone's time is up, the opponent is the winner */}
+        <Player
+          otherPlayerId={props.socket.id}
+          socket={props.socket}
+          opponent={true}
+          {...opponentPlayer()}
+        />
+        <Chat playerNames={playerNames} socket={props.socket} />
+        <Player
+          otherPlayerId={opponentKey}
+          socket={props.socket}
+          {...currentPlayer()}
+        />
       </div>
     </div>
   );

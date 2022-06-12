@@ -3,6 +3,7 @@ import Waiting from "./waiting";
 import Leave from "./leave";
 
 const Room = (props) => {
+  console.log([props]);
   const content = () => {
     if (props.mustLeave) {
       return (

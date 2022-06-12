@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 
-const CreateRoomBtn = ({ socket }) => {
+const CreateRoomBtn = ({ socket, userName }) => {
   const [roomName, setRoomName] = useState("");
   const [error, setError] = useState();
+  const [submittedUserName, setUsername] = useState("");
 
   useEffect(() => {
     socket.on("create-room-error", () => {
       setError("Name is already used!");
     });
   });
+
+  useEffect(() => {
+    setUsername(userName)
+  },[ userName ]);
 
   const handleRoomNameChange = (e) => {
     setRoomName(e.target.value);
@@ -17,6 +22,7 @@ const CreateRoomBtn = ({ socket }) => {
 
   const createRoom = () => {
     if (roomName.length) {
+      (submittedUserName) ? socket.emit("create-room", roomName, userName) :
       socket.emit("create-room", roomName);
     } else {
       setError("Room Name is required!");

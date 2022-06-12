@@ -1,5 +1,5 @@
 class Player {
-  constructor(id, action, board, isFirst) {
+  constructor(id, action, board, isFirst, name) {
     this.id = id;
     this.action = action;
     this.nodesLeftToPlace = 9;
@@ -7,6 +7,8 @@ class Player {
     this.board = board;
     this.isFirst = isFirst;
     this.selectedNode = null;
+    this.name = (name) ? name : undefined;
+    // undefined in the absence of a value to be able to use defaultProps on FE
   }
 
   changeAction(newAction) {
@@ -22,9 +24,10 @@ class Player {
       nodesToPlace: this.nodesLeftToPlace,
       error: this.error,
       capturedNodes: this.capturedNodes(),
-      isFirst: this.isFirst
+      isFirst: this.isFirst,
+      name: this.name
     };
-
+    
     return json;
   }
 
